@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal - Holland Family Home Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .item-row.selected { background-color: #f8fafc; }
+        .item-row.disabled { opacity: 0.5; pointer-events: none; background-color: #f3f4f6; }
+        .price-strikethrough { text-decoration: line-through; color: #94a3b8; font-size: 0.875rem; }
+        @media print {
+            .hidden-print { display: none !important; }
+            .no-break { break-inside: avoid; }
+            body { background-color: white; }
+            .shadow-lg { box-shadow: none !important; }
+            .border { border: 1px solid #ddd !important; }
+            .item-row.disabled { display: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-10 print:py-0">
+
+    <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 print:shadow-none print:border-0">
+        
+        <!-- Header -->
+        <div class="bg-slate-800 text-white p-8 print:bg-white print:text-black print:border-b-2 print:border-black">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-6">
+                <div>
+                    <h1 class="text-3xl font-bold uppercase tracking-wider">Holland Family</h1>
+                    <h2 class="text-xl font-light text-slate-300 print:text-gray-600">Home Services, Inc.</h2>
+                    <p class="mt-4 text-sm text-slate-400 print:text-gray-600">
+                        70 Copperhead Trail<br>
+                        Murphy, NC 28906<br>
+                        828-541-2442 | Thehollandseven@gmail.com
+                    </p>
+                </div>
+                <div class="text-left md:text-right w-full md:w-auto">
+                    <h3 class="text-2xl font-bold uppercase">Work Proposal</h3>
+                    <p class="text-slate-400 print:text-gray-600">Date: April 24, 2026</p>
+                    <div class="mt-4 bg-slate-700 p-4 rounded text-left print:bg-gray-100 print:text-black">
+                        <p class="text-xs uppercase text-slate-400 font-semibold mb-1">Prepared For:</p>
+                        <p class="font-bold text-lg italic">88 Meadowlark Ter</p>
+                        <p>Murphy, NC</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="p-8 border-b border-gray-200">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-4">
+                <div class="flex-1">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2 uppercase italic">Project Configuration</h3>
+                    <p class="text-gray-600">
+                        Select the items to be addressed below. This proposal includes all professional-grade adhesives, fasteners, and commercial-grade Bona Traffic HD sealers required for a master-level installation.
+                    </p>
+                </div>
+                <div class="bg-blue-50 border border-blue-100 p-4 rounded-lg w-full md:w-48 text-center shadow-sm">
+                    <p class="text-[10px] uppercase font-bold text-blue-800 tracking-widest mb-1">Est. Duration</p>
+                    <p class="text-2xl font-bold text-blue-900">2.5 – 3 Days</p>
+                </div>
+            </div>
+        </div>
+            
+        <!-- Itemized Checklist -->
+        <div class="p-8 border-b border-gray-200">
+            <div class="space-y-4">
+                
+                <!-- Main Stair Items -->
+                <div class="border rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-slate-50 px-4 py-2 border-b font-bold text-slate-700 text-sm uppercase tracking-wider">Stairway & Landing Installation</div>
+                    
+                    <!-- Treads -->
+                    <div class="item-row p-4 border-b flex items-start justify-between hover:bg-gray-50 transition-colors" id="row-treads">
+                        <div class="flex items-start">
+                            <input type="checkbox" id="check-treads" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()" checked>
+                            <label for="check-treads" class="ml-4">
+                                <span class="block font-bold text-gray-800 text-lg">11 Oak Stair Treads</span>
+                                <span class="text-sm text-gray-500">Master-level install with precision scribing. Finished with high-durability Bona Traffic HD sealer. Includes material sourcing and delivery.</span>
+                            </label>
+                        </div>
+                        <div class="text-right ml-4">
+                            <span class="block font-bold text-gray-800 text-lg">$1,881.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Risers -->
+                    <div class="item-row p-4 border-b flex items-start justify-between hover:bg-gray-50 transition-colors" id="row-risers">
+                        <div class="flex items-start">
+                            <input type="checkbox" id="check-risers" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()">
+                            <label for="check-risers" class="ml-4">
+                                <span class="block font-bold text-gray-800 text-lg">11 Oak Stair Risers</span>
+                                <span class="text-sm text-gray-500" id="desc-risers">Matching Oak risers for a seamless finished appearance. Includes custom fit and professional sealing.</span>
+                            </label>
+                        </div>
+                        <div class="text-right ml-4">
+                            <span class="block font-bold text-gray-800 text-lg">$1,204.50</span>
+                        </div>
+                    </div>
+
+                    <!-- Landing -->
+                    <div class="item-row p-4 flex items-start justify-between hover:bg-gray-50 transition-colors" id="row-landing">
+                        <div class="flex items-start">
+                            <input type="checkbox" id="check-landing" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()">
+                            <label for="check-landing" class="ml-4">
+                                <span class="block font-bold text-gray-800 text-lg">16 sq. ft. Wood Landing</span>
+                                <span class="text-sm text-gray-500">Replacement of existing plywood landing with matching wood surface and protective finish.</span>
+                            </label>
+                        </div>
+                        <div class="text-right ml-4">
+                            <span class="block font-bold text-gray-800 text-lg">$182.25</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repair Items -->
+                <div class="border rounded-lg overflow-hidden shadow-sm">
+                    <div class="bg-slate-50 px-4 py-2 border-b font-bold text-slate-700 text-sm uppercase tracking-wider">Maintenance & Structural Repairs</div>
+                    
+                    <!-- Railing Shoring -->
+                    <div class="item-row p-4 border-b flex items-start justify-between hover:bg-gray-50 transition-colors" id="row-shoring">
+                        <div class="flex items-start">
+                            <input type="checkbox" id="check-shoring" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()" checked>
+                            <label for="check-shoring" class="ml-4">
+                                <span class="block font-bold text-gray-800 text-lg">Handrail & Baluster Shoring</span>
+                                <span class="text-sm text-gray-500 italic" id="desc-shoring">Reinforce and secure short section of railing.</span>
+                            </label>
+                        </div>
+                        <div class="text-right ml-4">
+                            <span class="price-strikethrough block hidden" id="old-price-shoring">$125.00</span>
+                            <span class="block font-bold text-gray-800 text-lg" id="price-shoring">$125.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Kitchen Repair -->
+                    <div class="item-row p-4 border-b flex items-start justify-between hover:bg-gray-50 transition-colors" id="row-kitchen">
+                        <div class="flex items-start">
+                            <input type="checkbox" id="check-kitchen" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()" checked>
+                            <label for="check-kitchen" class="ml-4">
+                                <span class="block font-bold text-gray-800 text-lg">Kitchen Floor Plank Repair</span>
+                                <span class="text-sm text-gray-500 italic" id="desc-kitchen">Repair missing wood plank under moveable island. Best match guaranteed.</span>
+                            </label>
+                        </div>
+                        <div class="text-right ml-4">
+                            <span class="price-strikethrough block hidden" id="old-price-kitchen">$125.00</span>
+                            <span class="block font-bold text-gray-800 text-lg" id="price-kitchen">$125.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Shed Latch -->
+                    <div class="item-row p-4 flex items-start justify-between hover:bg-gray-50 transition-colors" id="row-shed">
+                        <div class="flex items-start">
+                            <input type="checkbox" id="check-shed" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()" checked>
+                            <label for="check-shed" class="ml-4">
+                                <span class="block font-bold text-gray-800 text-lg">Exterior Shed Latch & Security</span>
+                                <span class="text-sm text-gray-500 italic" id="desc-shed">Realignment and hardware replacement for secure padlocking.</span>
+                            </label>
+                        </div>
+                        <div class="text-right ml-4">
+                            <span class="price-strikethrough block hidden" id="old-price-shed">$95.00</span>
+                            <span class="block font-bold text-gray-800 text-lg" id="price-shed">$95.00</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Grand Total -->
+        <div class="p-8 bg-slate-900 text-white border-t-4 border-slate-800 no-break">
+            <div class="flex flex-col md:flex-row justify-between items-end">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-slate-400 italic">Project investment automatically adjusts based on selection.</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-sm text-slate-400 uppercase font-semibold tracking-wider">Estimated Project Total</p>
+                    <div class="text-5xl font-bold text-white" id="grand-total">$0.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Breakdown & Payment -->
+        <div class="p-8 border-b border-gray-200">
+             <div class="mb-6 pb-6 border-b border-gray-300 text-sm space-y-3">
+                <h4 class="font-bold text-gray-700 uppercase text-xs tracking-wider mb-2">Investment Summary</h4>
+                <div class="flex justify-between">
+                    <span class="text-gray-600 italic">Total Professional Services & Materials:</span>
+                    <span class="font-semibold text-gray-800" id="breakdown-all-inclusive">$0.00</span>
+                </div>
+                <div class="flex justify-between hidden" id="row-cc-fee">
+                    <span class="text-gray-600 font-bold">Credit Card Processing (4% Bank Fee):</span>
+                    <span class="font-bold text-red-600" id="breakdown-cc">$0.00</span>
+                </div>
+            </div>
+
+            <div class="mb-6 flex items-center justify-end">
+                <label class="flex items-center cursor-pointer">
+                    <input type="checkbox" id="use-credit-card" class="h-5 w-5 text-slate-800 rounded focus:ring-slate-500" onchange="calculateTotal()">
+                    <span class="ml-2 text-sm font-medium text-gray-700 italic">Apply 4% bank fee for credit card payment</span>
+                </label>
+            </div>
+
+            <h3 class="text-lg font-bold text-gray-800 mb-2 uppercase tracking-tighter">Payment & Scheduling</h3>
+            <p class="text-xs text-gray-500 mb-4 italic">Final project scheduling will be confirmed upon receipt of the deposit.</p>
+            
+            <div class="grid sm:grid-cols-2 gap-6 text-sm">
+                <div class="bg-blue-50 p-6 rounded border border-blue-200 shadow-sm border-l-8 border-l-blue-600">
+                    <p class="font-bold text-blue-900 mb-1 text-lg uppercase tracking-tight">1. Project Deposit</p>
+                    <p class="text-xs text-blue-700 mb-4 italic font-medium uppercase tracking-tighter underline">Required to secure materials and confirm scheduling.</p>
+                    <p class="text-3xl font-bold text-blue-600" id="deposit-materials">$0.00</p>
+                </div>
+                <div class="bg-white p-6 rounded border border-gray-200 shadow-sm border-l-8 border-l-slate-800">
+                    <p class="font-bold text-gray-800 mb-1 text-lg uppercase tracking-tight">2. Final Balance</p>
+                    <p class="text-xs text-gray-600 mb-4 italic font-medium uppercase tracking-tighter underline">Due upon project completion and walkthrough.</p>
+                    <p class="text-3xl font-bold text-gray-800" id="balance-amount">$0.00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Signature Section -->
+        <div class="p-8 mt-4 no-break">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 uppercase tracking-widest text-[10px] font-bold">Client Print Name</label>
+                    <input type="text" placeholder="Authorized Signee" class="mt-1 block w-full bg-gray-50 px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 uppercase tracking-widest text-[10px] font-bold">Acceptance Date</label>
+                    <input type="date" class="mt-1 block w-full bg-gray-50 px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <label class="block text-sm font-medium text-gray-700 uppercase tracking-widest text-[10px] font-bold">Client Signature</label>
+                <div class="relative">
+                    <canvas id="signature-pad" width="400" height="150" class="mt-1 w-full sm:w-[400px] border border-gray-300 rounded-md bg-gray-50 cursor-crosshair shadow-inner"></canvas>
+                    <div class="absolute top-2 right-2">
+                        <button onclick="clearSignature()" class="text-[10px] bg-white border px-2 py-1 rounded text-gray-400 hover:text-red-500 no-print transition-all uppercase font-bold tracking-widest">Clear</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-10 pt-6 border-t-2 border-dashed border-gray-300 no-print flex justify-center">
+                <button onclick="window.print()" class="px-12 py-4 bg-slate-800 text-white font-black rounded-lg shadow-2xl hover:bg-slate-700 transition-all transform hover:-translate-y-1">
+                    <i class="fa fa-file-pdf mr-2"></i> GENERATE FINAL PDF CONTRACT
+                </button>
+            </div>
+        </div>
+
+        <!-- Appendix -->
+        <div class="p-8 border-t-8 border-gray-100 bg-white page-break">
+             <h3 class="text-xl font-bold mb-6 uppercase text-slate-800 underline">Terms & Warranty</h3>
+            <div class="grid sm:grid-cols-2 gap-8 text-sm text-gray-700">
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2 underline tracking-tight">Technical Standards</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-500 italic">
+                        <li><strong>Fastening:</strong> Structural subfloor adhesive plus master-grade mechanical fasteners.</li>
+                        <li><strong>Finish:</strong> Application of professional-grade Bona Traffic HD (Commercial Satin).</li>
+                        <li><strong>Warranty:</strong> 1-year master carpentry labor warranty.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2 underline tracking-tight">Project Notes</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-500 italic">
+                        <li>Proposal assumes sound underlying structure.</li>
+                        <li>Sourcing of matching wood flooring for repairs is best effort.</li>
+                        <li>Valid for 30 days from date issued.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Internal Pricing Configuration
+        const MAT_MARKUP = 1.15; // 15% Sourcing & Handling markup
+        const DEPOSIT_MARKUP = 1.30; // 30% Cash flow markup for deposit
+        const TAX_RATE = 0.07; // 7% NC Sales Tax
+        const CC_FEE_RATE = 0.04;
+
+        // Base Labor Rates
+        const LABOR_TREAD = 125.00;
+        const LABOR_RISER = 75.00;
+        const LABOR_LANDING = 96.00;
+
+        // Raw Material Costs (before markups/tax)
+        const RAW_MAT_TREAD = 40.00;
+        const RAW_MAT_RISER = 30.00;
+        const RAW_MAT_LANDING = 75.00;
+        const RAW_MAT_CONSUMABLES = 325.00; // Sealer + Adhesives/Fasteners
+
+        const ITEMS = {
+            treads: { 
+                total: (LABOR_TREAD + (RAW_MAT_TREAD * MAT_MARKUP)) * 11, 
+                mat: RAW_MAT_TREAD * 11 
+            },
+            risers: { 
+                total: (LABOR_RISER + (RAW_MAT_RISER * MAT_MARKUP)) * 11, 
+                mat: RAW_MAT_RISER * 11 
+            },
+            landing: { 
+                total: (LABOR_LANDING + (RAW_MAT_LANDING * MAT_MARKUP)), 
+                mat: RAW_MAT_LANDING 
+            },
+            shoring: { total: 125.00, mat: 0.00 },
+            kitchen: { total: 125.00, mat: 0.00 },
+            shed: { total: 95.00, mat: 20.00 },
+            consumables: RAW_MAT_CONSUMABLES * MAT_MARKUP
+        };
+
+        function formatMoney(amount) {
+            return '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        function calculateTotal() {
+            const treadCheckbox = document.getElementById('check-treads');
+            const riserCheckbox = document.getElementById('check-risers');
+            const riserRow = document.getElementById('row-risers');
+            const riserDesc = document.getElementById('desc-risers');
+            
+            // Dependency Logic
+            if (!treadCheckbox.checked) {
+                riserCheckbox.checked = false;
+                riserCheckbox.disabled = true;
+                riserRow.classList.add('disabled');
+                riserDesc.innerHTML = 'Matching Oak risers. <span class="text-amber-600 font-bold uppercase text-[10px]">[Requires Tread Installation]</span>';
+            } else {
+                riserCheckbox.disabled = false;
+                riserRow.classList.remove('disabled');
+                riserDesc.innerText = 'Matching Oak risers for a seamless finished appearance. Includes custom fit and professional sealing.';
+            }
+
+            const hasTreads = treadCheckbox.checked;
+            const hasRisers = riserCheckbox.checked;
+            const hasLanding = document.getElementById('check-landing').checked;
+            const hasShoring = document.getElementById('check-shoring').checked;
+            const hasKitchen = document.getElementById('check-kitchen').checked;
+            const hasShed = document.getElementById('check-shed').checked;
+
+            let runningTotal = 0;
+            let runningMat = 0; // Tracking raw mat for tax and deposit logic
+
+            if (hasTreads) { runningTotal += ITEMS.treads.total; runningMat += ITEMS.treads.mat; }
+            if (hasRisers) { runningTotal += ITEMS.risers.total; runningMat += ITEMS.risers.mat; }
+            if (hasLanding) { runningTotal += ITEMS.landing.total; runningMat += ITEMS.landing.mat; }
+
+            // Bundle Logic
+            const shoringPriceDisplay = document.getElementById('price-shoring');
+            const shoringOldDisplay = document.getElementById('old-price-shoring');
+            const shoringDescDisplay = document.getElementById('desc-shoring');
+            if (hasShoring) {
+                if (hasTreads) {
+                    shoringPriceDisplay.innerText = "INCLUDED";
+                    shoringPriceDisplay.classList.add('text-green-600');
+                    shoringOldDisplay.classList.remove('hidden');
+                    shoringDescDisplay.innerHTML = 'Reinforce and secure short section of railing. <span class="text-blue-600 font-bold tracking-tighter uppercase text-[10px]">[Included with Stair Treads]</span>';
+                } else {
+                    runningTotal += ITEMS.shoring.total;
+                    shoringPriceDisplay.innerText = formatMoney(ITEMS.shoring.total);
+                    shoringPriceDisplay.classList.remove('text-green-600');
+                    shoringOldDisplay.classList.add('hidden');
+                    shoringDescDisplay.innerText = 'Reinforce and secure short section of railing.';
+                }
+            }
+
+            const kitchenPriceDisplay = document.getElementById('price-kitchen');
+            const kitchenOldDisplay = document.getElementById('old-price-kitchen');
+            const kitchenDescDisplay = document.getElementById('desc-kitchen');
+            if (hasKitchen) {
+                if (hasLanding) {
+                    kitchenPriceDisplay.innerText = "INCLUDED";
+                    kitchenPriceDisplay.classList.add('text-green-600');
+                    kitchenOldDisplay.classList.remove('hidden');
+                    kitchenDescDisplay.innerHTML = 'Repair missing wood plank under moveable island. <span class="text-blue-600 font-bold tracking-tighter uppercase text-[10px]">[Included with Landing Upgrade]</span>';
+                } else {
+                    runningTotal += ITEMS.kitchen.total;
+                    kitchenPriceDisplay.innerText = formatMoney(ITEMS.kitchen.total);
+                    kitchenPriceDisplay.classList.remove('text-green-600');
+                    kitchenOldDisplay.classList.add('hidden');
+                    kitchenDescDisplay.innerText = 'Repair missing wood plank under moveable island. Best match guaranteed.';
+                }
+            }
+
+            const shedPriceDisplay = document.getElementById('price-shed');
+            const shedOldDisplay = document.getElementById('old-price-shed');
+            const shedDescDisplay = document.getElementById('desc-shed');
+            if (hasShed) {
+                if (runningTotal > 200) {
+                    shedPriceDisplay.innerText = "INCLUDED";
+                    shedPriceDisplay.classList.add('text-green-600');
+                    shedOldDisplay.classList.remove('hidden');
+                    shedDescDisplay.innerHTML = 'Realignment and hardware replacement for secure padlocking. <span class="text-blue-600 font-bold tracking-tighter uppercase text-[10px]">[Included for Project Total > $200]</span>';
+                } else {
+                    runningTotal += ITEMS.shed.total;
+                    runningMat += ITEMS.shed.mat;
+                    shedPriceDisplay.innerText = formatMoney(ITEMS.shed.total);
+                    shedPriceDisplay.classList.remove('text-green-600');
+                    shedOldDisplay.classList.add('hidden');
+                    shedDescDisplay.innerText = 'Realignment and hardware replacement for secure padlocking.';
+                }
+            }
+
+            let consumableMarkupCost = 0;
+            let rawConsumableCost = 0;
+            if (hasTreads || hasRisers || hasLanding) { 
+                consumableMarkupCost = ITEMS.consumables; 
+                rawConsumableCost = RAW_MAT_CONSUMABLES;
+            }
+
+            let hiddenTax = (runningMat + rawConsumableCost) * TAX_RATE;
+            let grandTotal = runningTotal + hiddenTax + consumableMarkupCost;
+
+            let ccFeeAmt = 0;
+            const useCC = document.getElementById('use-credit-card').checked;
+            if (useCC) {
+                ccFeeAmt = grandTotal * CC_FEE_RATE;
+                grandTotal += ccFeeAmt;
+                document.getElementById('row-cc-fee').classList.remove('hidden');
+            } else {
+                document.getElementById('row-cc-fee').classList.add('hidden');
+            }
+
+            // Internal Deposit Calculation: marked up mats + tax + markup
+            let materialDepositBase = ( (runningMat * MAT_MARKUP) + hiddenTax + consumableMarkupCost ) * DEPOSIT_MARKUP;
+            if (useCC) materialDepositBase *= (1 + CC_FEE_RATE);
+            let finalBalance = grandTotal - materialDepositBase;
+
+            // UI Update
+            document.getElementById('grand-total').innerText = formatMoney(grandTotal);
+            document.getElementById('breakdown-all-inclusive').innerText = formatMoney(grandTotal - ccFeeAmt);
+            document.getElementById('breakdown-cc').innerText = formatMoney(ccFeeAmt);
+            document.getElementById('deposit-materials').innerText = formatMoney(materialDepositBase);
+            document.getElementById('balance-amount').innerText = formatMoney(finalBalance);
+        }
+
+        // Signature Pad Logic
+        const canvas = document.getElementById('signature-pad');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            ctx.scale(ratio, ratio);
+        }
+        window.addEventListener('resize', resizeCanvas);
+        setTimeout(resizeCanvas, 200);
+        function start(e) { drawing = true; draw(e); }
+        function stop() { drawing = false; ctx.beginPath(); }
+        function draw(e) {
+            if (!drawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+            ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = '#1e293b';
+            ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x, y);
+            e.preventDefault();
+        }
+        canvas.addEventListener('mousedown', start);
+        canvas.addEventListener('mouseup', stop);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchstart', start, {passive: false});
+        canvas.addEventListener('touchend', stop);
+        canvas.addEventListener('touchmove', draw, {passive: false});
+        function clearSignature() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+        calculateTotal();
+    </script>
+</body>
+</html>

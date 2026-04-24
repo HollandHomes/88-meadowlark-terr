@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,12 +40,12 @@
                     </p>
                 </div>
                 <div class="text-left md:text-right w-full md:w-auto">
-                    <h3 class="text-2xl font-bold uppercase">Work Proposal</h3>
+                    <h3 class="text-2xl font-bold uppercase tracking-tighter">Work Proposal</h3>
                     <p class="text-slate-400 print:text-gray-600">Date: April 24, 2026</p>
                     <div class="mt-4 bg-slate-700 p-4 rounded text-left print:bg-gray-100 print:text-black">
-                        <p class="text-xs uppercase text-slate-400 font-semibold mb-1">Prepared For:</p>
-                        <p class="font-bold text-lg italic">88 Meadowlark Ter</p>
-                        <p>Murphy, NC</p>
+                        <p class="text-xs uppercase text-slate-400 font-semibold mb-1 tracking-wider">Project Location:</p>
+                        <p class="font-bold text-lg tracking-tight">88 Meadowlark Ter</p>
+                        <p>Murphy, NC 28906</p>
                     </div>
                 </div>
             </div>
@@ -56,7 +57,7 @@
                 <div class="flex-1">
                     <h3 class="text-lg font-bold text-gray-800 mb-2 uppercase italic">Project Configuration</h3>
                     <p class="text-gray-600">
-                        Select the items to be addressed below. This proposal includes all professional-grade adhesives, fasteners, and commercial-grade Bona Traffic HD sealers required for a master-level installation.
+                        Please select the items you would like addressed below. This proposal includes all professional-grade adhesives, fasteners, and commercial-grade Bona Traffic HD sealers required for a high-precision installation.
                     </p>
                 </div>
                 <div class="bg-blue-50 border border-blue-100 p-4 rounded-lg w-full md:w-48 text-center shadow-sm">
@@ -80,7 +81,7 @@
                             <input type="checkbox" id="check-treads" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()" checked>
                             <label for="check-treads" class="ml-4">
                                 <span class="block font-bold text-gray-800 text-lg">11 Oak Stair Treads</span>
-                                <span class="text-sm text-gray-500">Master-level install with precision scribing. Finished with high-durability Bona Traffic HD sealer. Includes material sourcing and delivery.</span>
+                                <span class="text-sm text-gray-500">Master-level install with precision scribing and application of Bona Traffic HD sealer.</span>
                             </label>
                         </div>
                         <div class="text-right ml-4">
@@ -94,7 +95,7 @@
                             <input type="checkbox" id="check-risers" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()">
                             <label for="check-risers" class="ml-4">
                                 <span class="block font-bold text-gray-800 text-lg">11 Oak Stair Risers</span>
-                                <span class="text-sm text-gray-500" id="desc-risers">Matching Oak risers for a seamless finished appearance. Includes custom fit and professional sealing.</span>
+                                <span class="text-sm text-gray-500" id="desc-risers">Matching Oak risers for a seamless finished appearance.</span>
                             </label>
                         </div>
                         <div class="text-right ml-4">
@@ -107,12 +108,12 @@
                         <div class="flex items-start">
                             <input type="checkbox" id="check-landing" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()">
                             <label for="check-landing" class="ml-4">
-                                <span class="block font-bold text-gray-800 text-lg">16 sq. ft. Wood Landing</span>
-                                <span class="text-sm text-gray-500">Replacement of existing plywood landing with matching wood surface and protective finish.</span>
+                                <span class="block font-bold text-gray-800 text-lg">16 sq. ft. Wood Landing Upgrade</span>
+                                <span class="text-sm text-gray-500">Full replacement of plywood landing with finished wood surface. Includes custom scribing to walls.</span>
                             </label>
                         </div>
                         <div class="text-right ml-4">
-                            <span class="block font-bold text-gray-800 text-lg">$182.25</span>
+                            <span class="block font-bold text-gray-800 text-lg">$350.00</span>
                         </div>
                     </div>
                 </div>
@@ -225,7 +226,7 @@
         <div class="p-8 mt-4 no-break">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 uppercase tracking-widest text-[10px] font-bold">Client Print Name</label>
+                    <label class="block text-sm font-medium text-gray-700 uppercase tracking-widest text-[10px] font-bold">Printed Name</label>
                     <input type="text" placeholder="Authorized Signee" class="mt-1 block w-full bg-gray-50 px-3 py-2 border border-gray-300 rounded-md shadow-sm">
                 </div>
                 <div>
@@ -235,7 +236,7 @@
             </div>
 
             <div class="mt-8">
-                <label class="block text-sm font-medium text-gray-700 uppercase tracking-widest text-[10px] font-bold">Client Signature</label>
+                <label class="block text-sm font-medium text-gray-700 uppercase tracking-widest text-[10px] font-bold">Signature</label>
                 <div class="relative">
                     <canvas id="signature-pad" width="400" height="150" class="mt-1 w-full sm:w-[400px] border border-gray-300 rounded-md bg-gray-50 cursor-crosshair shadow-inner"></canvas>
                     <div class="absolute top-2 right-2">
@@ -256,16 +257,16 @@
              <h3 class="text-xl font-bold mb-6 uppercase text-slate-800 underline">Terms & Warranty</h3>
             <div class="grid sm:grid-cols-2 gap-8 text-sm text-gray-700">
                 <div>
-                    <h4 class="font-bold text-gray-800 mb-2 underline tracking-tight">Technical Standards</h4>
-                    <ul class="list-disc list-inside space-y-1 text-gray-500 italic">
+                    <h4 class="font-bold text-gray-800 mb-2 underline tracking-tight text-xs uppercase">Technical Standards</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-500 italic text-xs">
                         <li><strong>Fastening:</strong> Structural subfloor adhesive plus master-grade mechanical fasteners.</li>
                         <li><strong>Finish:</strong> Application of professional-grade Bona Traffic HD (Commercial Satin).</li>
                         <li><strong>Warranty:</strong> 1-year master carpentry labor warranty.</li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-gray-800 mb-2 underline tracking-tight">Project Notes</h4>
-                    <ul class="list-disc list-inside space-y-1 text-gray-500 italic">
+                    <h4 class="font-bold text-gray-800 mb-2 underline tracking-tight text-xs uppercase">Project Notes</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-500 italic text-xs">
                         <li>Proposal assumes sound underlying structure.</li>
                         <li>Sourcing of matching wood flooring for repairs is best effort.</li>
                         <li>Valid for 30 days from date issued.</li>
@@ -285,13 +286,15 @@
         // Base Labor Rates
         const LABOR_TREAD = 125.00;
         const LABOR_RISER = 75.00;
-        const LABOR_LANDING = 96.00;
 
-        // Raw Material Costs (before markups/tax)
+        // Raw Material Costs
         const RAW_MAT_TREAD = 40.00;
         const RAW_MAT_RISER = 30.00;
-        const RAW_MAT_LANDING = 75.00;
         const RAW_MAT_CONSUMABLES = 325.00; // Sealer + Adhesives/Fasteners
+
+        // UPDATED LANDING PRICE
+        const LANDING_TOTAL = 350.00; 
+        const RAW_MAT_LANDING = 75.00; // Estimated material portion for deposit logic
 
         const ITEMS = {
             treads: { 
@@ -303,7 +306,7 @@
                 mat: RAW_MAT_RISER * 11 
             },
             landing: { 
-                total: (LABOR_LANDING + (RAW_MAT_LANDING * MAT_MARKUP)), 
+                total: LANDING_TOTAL, 
                 mat: RAW_MAT_LANDING 
             },
             shoring: { total: 125.00, mat: 0.00 },
@@ -327,7 +330,7 @@
                 riserCheckbox.checked = false;
                 riserCheckbox.disabled = true;
                 riserRow.classList.add('disabled');
-                riserDesc.innerHTML = 'Matching Oak risers. <span class="text-amber-600 font-bold uppercase text-[10px]">[Requires Tread Installation]</span>';
+                riserDesc.innerHTML = 'Matching Oak risers. <span class="text-amber-600 font-bold uppercase text-[10px] tracking-tight">[Requires Tread Installation]</span>';
             } else {
                 riserCheckbox.disabled = false;
                 riserRow.classList.remove('disabled');
@@ -342,7 +345,7 @@
             const hasShed = document.getElementById('check-shed').checked;
 
             let runningTotal = 0;
-            let runningMat = 0; // Tracking raw mat for tax and deposit logic
+            let runningMat = 0;
 
             if (hasTreads) { runningTotal += ITEMS.treads.total; runningMat += ITEMS.treads.mat; }
             if (hasRisers) { runningTotal += ITEMS.risers.total; runningMat += ITEMS.risers.mat; }
@@ -357,7 +360,7 @@
                     shoringPriceDisplay.innerText = "INCLUDED";
                     shoringPriceDisplay.classList.add('text-green-600');
                     shoringOldDisplay.classList.remove('hidden');
-                    shoringDescDisplay.innerHTML = 'Reinforce and secure short section of railing. <span class="text-blue-600 font-bold tracking-tighter uppercase text-[10px]">[Included with Stair Treads]</span>';
+                    shoringDescDisplay.innerHTML = 'Reinforce and secure short section of railing. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tight">[Included with Stair Treads]</span>';
                 } else {
                     runningTotal += ITEMS.shoring.total;
                     shoringPriceDisplay.innerText = formatMoney(ITEMS.shoring.total);
@@ -375,7 +378,7 @@
                     kitchenPriceDisplay.innerText = "INCLUDED";
                     kitchenPriceDisplay.classList.add('text-green-600');
                     kitchenOldDisplay.classList.remove('hidden');
-                    kitchenDescDisplay.innerHTML = 'Repair missing wood plank under moveable island. <span class="text-blue-600 font-bold tracking-tighter uppercase text-[10px]">[Included with Landing Upgrade]</span>';
+                    kitchenDescDisplay.innerHTML = 'Repair missing wood plank under moveable island. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tight">[Included with Landing Upgrade]</span>';
                 } else {
                     runningTotal += ITEMS.kitchen.total;
                     kitchenPriceDisplay.innerText = formatMoney(ITEMS.kitchen.total);
@@ -393,7 +396,7 @@
                     shedPriceDisplay.innerText = "INCLUDED";
                     shedPriceDisplay.classList.add('text-green-600');
                     shedOldDisplay.classList.remove('hidden');
-                    shedDescDisplay.innerHTML = 'Realignment and hardware replacement for secure padlocking. <span class="text-blue-600 font-bold tracking-tighter uppercase text-[10px]">[Included for Project Total > $200]</span>';
+                    shedDescDisplay.innerHTML = 'Realignment and hardware replacement for secure padlocking. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tight">[Included for Project Total > $200]</span>';
                 } else {
                     runningTotal += ITEMS.shed.total;
                     runningMat += ITEMS.shed.mat;
@@ -424,6 +427,7 @@
                 document.getElementById('row-cc-fee').classList.add('hidden');
             }
 
+            // Internal Deposit Calculation
             let materialDepositBase = ( (runningMat * MAT_MARKUP) + hiddenTax + consumableMarkupCost ) * DEPOSIT_MARKUP;
             if (useCC) materialDepositBase *= (1 + CC_FEE_RATE);
             let finalBalance = grandTotal - materialDepositBase;
@@ -434,18 +438,10 @@
             if (hasTreads) { minDays = 1.5; maxDays = 2; }
             if (hasRisers) { minDays += 0.5; maxDays += 0.5; }
             if (hasLanding) { minDays += 0.5; maxDays += 0.5; }
-            
-            // If only repairs selected
-            if (!hasTreads && !hasLanding && (hasShoring || hasKitchen || hasShed)) {
-                minDays = 0.5; maxDays = 1;
-            }
+            if (!hasTreads && !hasLanding && (hasShoring || hasKitchen || hasShed)) { minDays = 0.5; maxDays = 1; }
             
             const durationDisplay = document.getElementById('display-duration');
-            if (minDays === 0) {
-                durationDisplay.innerText = "---";
-            } else {
-                durationDisplay.innerText = minDays + " – " + maxDays + " Days";
-            }
+            durationDisplay.innerText = (minDays === 0) ? "---" : minDays + " – " + maxDays + " Days";
 
             // UI Update
             document.getElementById('grand-total').innerText = formatMoney(grandTotal);
@@ -490,3 +486,5 @@
     </script>
 </body>
 </html>
+
+```

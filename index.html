@@ -150,7 +150,7 @@
                             <input type="checkbox" id="check-shoring" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()" checked>
                             <label for="check-shoring" class="ml-4">
                                 <span class="block font-bold text-gray-800 text-lg">Handrail & Baluster Shoring</span>
-                                <span class="text-sm text-gray-500 italic" id="desc-shoring">Reinforce the short section of rail, shoring it up to be identical to the other hand rail.</span>
+                                <span class="text-sm text-gray-500 italic" id="desc-shoring">Reinforce the short section of rail, shoring it up so the look and stability are identical to the main handrail.</span>
                             </label>
                         </div>
                         <div class="text-right ml-4">
@@ -399,7 +399,7 @@
             if (hasRisers) { runningTotal += riserPrice; runningMat += (spec.riserMat * 11); }
             if (hasLanding) { runningTotal += landingPrice; runningMat += spec.landingMat; }
 
-            // Bundle Logic
+            // Bundle Logic & Description Updates
             const shoringPriceDisplay = document.getElementById('price-shoring');
             const shoringOldDisplay = document.getElementById('old-price-shoring');
             const shoringDescDisplay = document.getElementById('desc-shoring');
@@ -408,13 +408,13 @@
                     shoringPriceDisplay.innerText = "INCLUDED";
                     shoringPriceDisplay.classList.add('text-green-600');
                     shoringOldDisplay.classList.remove('hidden');
-                    shoringDescDisplay.innerHTML = 'Reinforce the short section of rail, shoring it up to be identical to the other hand rail. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tight">[Included with Stair Treads]</span>';
+                    shoringDescDisplay.innerHTML = 'Reinforce the short section of rail, shoring it up so the look and stability are identical to the main handrail. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tighter">[Included with Stair Treads]</span>';
                 } else {
-                    runningTotal += REPAIR_ITEMS.shoring.total;
-                    shoringPriceDisplay.innerText = formatMoney(REPAIR_ITEMS.shoring.total);
+                    runningTotal += ITEMS.shoring.total;
+                    shoringPriceDisplay.innerText = formatMoney(ITEMS.shoring.total);
                     shoringPriceDisplay.classList.remove('text-green-600');
                     shoringOldDisplay.classList.add('hidden');
-                    shoringDescDisplay.innerText = 'Reinforce the short section of rail, shoring it up to be identical to the other hand rail.';
+                    shoringDescDisplay.innerText = 'Reinforce the short section of rail, shoring it up so the look and stability are identical to the main handrail.';
                 }
             }
 

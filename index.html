@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +12,7 @@
         .item-row.selected { background-color: #f8fafc; }
         .item-row.disabled { opacity: 0.5; pointer-events: none; background-color: #f3f4f6; }
         .price-strikethrough { text-decoration: line-through; color: #94a3b8; font-size: 0.875rem; }
+        .species-pill.active { background-color: #1e293b; color: white; border-color: #1e293b; }
         @media print {
             .hidden-print { display: none !important; }
             .no-break { break-inside: avoid; }
@@ -27,6 +27,16 @@
 
     <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 print:shadow-none print:border-0">
         
+        <!-- NEW: Announcement Section -->
+        <div class="bg-red-50 border-b border-red-100 p-6 no-print">
+            <h3 class="text-red-700 font-bold uppercase text-xs tracking-widest mb-2"><i class="fa fa-circle-info mr-2"></i> Important Proposal Updates</h3>
+            <ul class="text-red-600 text-sm space-y-1 list-disc list-inside font-medium">
+                <li><strong>New Material Option:</strong> Added Standard Pine stairway configuration as a cost-effective alternative to Premium Oak.</li>
+                <li><strong>Handrail Specifications:</strong> Revised scope to ensure the short section is shored up to be identical to the main handrail.</li>
+                <li><strong>Bundle Logic:</strong> Minor repairs are now automatically discounted or included based on major project selections.</li>
+            </ul>
+        </div>
+
         <!-- Header -->
         <div class="bg-slate-800 text-white p-8 print:bg-white print:text-black print:border-b-2 print:border-black">
             <div class="flex flex-col md:flex-row justify-between items-start gap-6">
@@ -57,7 +67,7 @@
                 <div class="flex-1">
                     <h3 class="text-lg font-bold text-gray-800 mb-2 uppercase italic">Project Configuration</h3>
                     <p class="text-gray-600">
-                        Please select the items you would like addressed below. This proposal includes all professional-grade adhesives, fasteners, and commercial-grade Bona Traffic HD sealers required for a high-precision installation.
+                        Please select the wood species and items you would like addressed below. This proposal includes all professional-grade adhesives, fasteners, and specialized sealers required for a high-precision installation.
                     </p>
                 </div>
                 <div class="bg-blue-50 border border-blue-100 p-4 rounded-lg w-full md:w-48 text-center shadow-sm">
@@ -71,21 +81,33 @@
         <div class="p-8 border-b border-gray-200">
             <div class="space-y-4">
                 
+                <!-- Species Selection -->
+                <div class="flex items-center justify-between bg-slate-50 p-4 rounded-lg border border-slate-200 mb-2">
+                    <span class="text-sm font-bold text-slate-700 uppercase tracking-wider">Step 1: Choose Wood Species</span>
+                    <div class="flex gap-2">
+                        <button onclick="setSpecies('oak')" id="btn-oak" class="species-pill active border-2 px-4 py-1 rounded-full text-xs font-bold transition-all">PREMIUM OAK</button>
+                        <button onclick="setSpecies('pine')" id="btn-pine" class="species-pill border-2 border-slate-300 px-4 py-1 rounded-full text-xs font-bold text-slate-500 transition-all">STANDARD PINE</button>
+                    </div>
+                </div>
+
                 <!-- Main Stair Items -->
                 <div class="border rounded-lg overflow-hidden shadow-sm">
-                    <div class="bg-slate-50 px-4 py-2 border-b font-bold text-slate-700 text-sm uppercase tracking-wider">Stairway & Landing Installation</div>
+                    <div class="bg-slate-100 px-4 py-2 border-b font-bold text-slate-700 text-sm uppercase tracking-wider flex justify-between">
+                        <span>Stairway & Landing Installation</span>
+                        <span class="text-[10px] bg-slate-800 text-white px-2 py-0.5 rounded" id="label-species">Currently: Oak</span>
+                    </div>
                     
                     <!-- Treads -->
                     <div class="item-row p-4 border-b flex items-start justify-between hover:bg-gray-50 transition-colors" id="row-treads">
                         <div class="flex items-start">
                             <input type="checkbox" id="check-treads" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()" checked>
                             <label for="check-treads" class="ml-4">
-                                <span class="block font-bold text-gray-800 text-lg">11 Oak Stair Treads</span>
-                                <span class="text-sm text-gray-500">Master-level install with precision scribing and application of Bona Traffic HD sealer.</span>
+                                <span class="block font-bold text-gray-800 text-lg" id="label-treads">11 Oak Stair Treads</span>
+                                <span class="text-sm text-gray-500" id="desc-treads">Master-level install with precision scribing and high-performance Bona Traffic HD sealer.</span>
                             </label>
                         </div>
                         <div class="text-right ml-4">
-                            <span class="block font-bold text-gray-800 text-lg">$1,881.00</span>
+                            <span class="block font-bold text-gray-800 text-lg" id="price-treads">$1,881.00</span>
                         </div>
                     </div>
 
@@ -94,12 +116,12 @@
                         <div class="flex items-start">
                             <input type="checkbox" id="check-risers" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()">
                             <label for="check-risers" class="ml-4">
-                                <span class="block font-bold text-gray-800 text-lg">11 Oak Stair Risers</span>
-                                <span class="text-sm text-gray-500" id="desc-risers">Matching Oak risers for a seamless finished appearance.</span>
+                                <span class="block font-bold text-gray-800 text-lg" id="label-risers">11 Oak Stair Risers</span>
+                                <span class="text-sm text-gray-500" id="desc-risers">Matching wood risers for a seamless finished appearance.</span>
                             </label>
                         </div>
                         <div class="text-right ml-4">
-                            <span class="block font-bold text-gray-800 text-lg">$1,204.50</span>
+                            <span class="block font-bold text-gray-800 text-lg" id="price-risers">$1,204.50</span>
                         </div>
                     </div>
 
@@ -109,7 +131,7 @@
                             <input type="checkbox" id="check-landing" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()">
                             <label for="check-landing" class="ml-4">
                                 <span class="block font-bold text-gray-800 text-lg">16 sq. ft. Wood Landing Upgrade</span>
-                                <span class="text-sm text-gray-500">Full replacement of plywood landing with finished wood surface. Includes custom scribing to walls.</span>
+                                <span class="text-sm text-gray-500">Full replacement of plywood landing with matching finished wood surface. Includes custom scribing to walls.</span>
                             </label>
                         </div>
                         <div class="text-right ml-4">
@@ -128,7 +150,7 @@
                             <input type="checkbox" id="check-shoring" class="mt-1 h-5 w-5 text-slate-800 rounded border-gray-300 focus:ring-slate-500" onchange="calculateTotal()" checked>
                             <label for="check-shoring" class="ml-4">
                                 <span class="block font-bold text-gray-800 text-lg">Handrail & Baluster Shoring</span>
-                                <span class="text-sm text-gray-500 italic" id="desc-shoring">Reinforce and secure short section of railing.</span>
+                                <span class="text-sm text-gray-500 italic" id="desc-shoring">Reinforce the short section of rail, shoring it up to be identical to the other hand rail.</span>
                             </label>
                         </div>
                         <div class="text-right ml-4">
@@ -260,7 +282,7 @@
                     <h4 class="font-bold text-gray-800 mb-2 underline tracking-tight text-xs uppercase">Technical Standards</h4>
                     <ul class="list-disc list-inside space-y-1 text-gray-500 italic text-xs">
                         <li><strong>Fastening:</strong> Structural subfloor adhesive plus master-grade mechanical fasteners.</li>
-                        <li><strong>Finish:</strong> Application of professional-grade Bona Traffic HD (Commercial Satin).</li>
+                        <li><strong>Finish:</strong> Application of professional-grade Bona Traffic HD (Commercial Satin) for Oak, or Polyurethane for Pine.</li>
                         <li><strong>Warranty:</strong> 1-year master carpentry labor warranty.</li>
                     </ul>
                 </div>
@@ -277,46 +299,62 @@
     </div>
 
     <script>
-        // Internal Pricing Configuration
-        const MAT_MARKUP = 1.15; // 15% Sourcing & Handling markup
-        const DEPOSIT_MARKUP = 1.30; // 30% Cash flow markup for deposit
-        const TAX_RATE = 0.07; // 7% NC Sales Tax
+        let currentSpecies = 'oak';
+
+        const MAT_MARKUP = 1.15; 
+        const DEPOSIT_MARKUP = 1.30; 
+        const TAX_RATE = 0.07; 
         const CC_FEE_RATE = 0.04;
 
-        // Base Labor Rates
         const LABOR_TREAD = 125.00;
         const LABOR_RISER = 75.00;
+        const LABOR_LANDING = 96.00;
 
-        // Raw Material Costs
-        const RAW_MAT_TREAD = 40.00;
-        const RAW_MAT_RISER = 30.00;
-        const RAW_MAT_CONSUMABLES = 325.00; // Sealer + Adhesives/Fasteners
+        // Configuration Object
+        const CONFIG = {
+            oak: {
+                treadMat: 40.00,
+                riserMat: 30.00,
+                landingMat: 75.00,
+                sealerMat: 175.00, // Bona
+                desc: 'Master-level install with precision scribing and application of Bona Traffic HD sealer.'
+            },
+            pine: {
+                treadMat: 15.48,
+                riserMat: 10.28,
+                landingMat: 45.00, // Reduced landing mat for pine
+                sealerMat: 63.98, // Standard Poly
+                desc: 'Master-level install with precision scribing and application of standard Polyurethane sealer.'
+            }
+        };
 
-        // UPDATED LANDING PRICE
-        const LANDING_TOTAL = 350.00; 
-        const RAW_MAT_LANDING = 75.00; // Estimated material portion for deposit logic
-
-        const ITEMS = {
-            treads: { 
-                total: (LABOR_TREAD + (RAW_MAT_TREAD * MAT_MARKUP)) * 11, 
-                mat: RAW_MAT_TREAD * 11 
-            },
-            risers: { 
-                total: (LABOR_RISER + (RAW_MAT_RISER * MAT_MARKUP)) * 11, 
-                mat: RAW_MAT_RISER * 11 
-            },
-            landing: { 
-                total: LANDING_TOTAL, 
-                mat: RAW_MAT_LANDING 
-            },
+        const REPAIR_ITEMS = {
             shoring: { total: 125.00, mat: 0.00 },
             kitchen: { total: 125.00, mat: 0.00 },
             shed: { total: 95.00, mat: 20.00 },
-            consumables: RAW_MAT_CONSUMABLES * MAT_MARKUP
+            consumablesBase: 150.00 // Fasteners/Adhesives
         };
 
         function formatMoney(amount) {
             return '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        function setSpecies(species) {
+            currentSpecies = species;
+            document.getElementById('btn-oak').classList.toggle('active', species === 'oak');
+            document.getElementById('btn-oak').classList.toggle('border-slate-300', species !== 'oak');
+            document.getElementById('btn-oak').classList.toggle('text-slate-500', species !== 'oak');
+            
+            document.getElementById('btn-pine').classList.toggle('active', species === 'pine');
+            document.getElementById('btn-pine').classList.toggle('border-slate-300', species !== 'pine');
+            document.getElementById('btn-pine').classList.toggle('text-slate-500', species !== 'pine');
+
+            document.getElementById('label-species').innerText = "Currently: " + species.charAt(0).toUpperCase() + species.slice(1);
+            document.getElementById('label-treads').innerText = `11 ${species.charAt(0).toUpperCase() + species.slice(1)} Stair Treads`;
+            document.getElementById('label-risers').innerText = `11 ${species.charAt(0).toUpperCase() + species.slice(1)} Stair Risers`;
+            document.getElementById('desc-treads').innerText = CONFIG[species].desc;
+
+            calculateTotal();
         }
 
         function calculateTotal() {
@@ -330,11 +368,11 @@
                 riserCheckbox.checked = false;
                 riserCheckbox.disabled = true;
                 riserRow.classList.add('disabled');
-                riserDesc.innerHTML = 'Matching Oak risers. <span class="text-amber-600 font-bold uppercase text-[10px] tracking-tight">[Requires Tread Installation]</span>';
+                riserDesc.innerHTML = `Matching ${currentSpecies} risers. <span class="text-amber-600 font-bold uppercase text-[10px] tracking-tight">[Requires Tread Installation]</span>`;
             } else {
                 riserCheckbox.disabled = false;
                 riserRow.classList.remove('disabled');
-                riserDesc.innerText = 'Matching Oak risers for a seamless finished appearance. Includes custom fit and professional sealing.';
+                riserDesc.innerText = `Matching ${currentSpecies} risers for a seamless finished appearance. Includes custom fit and professional sealing.`;
             }
 
             const hasTreads = treadCheckbox.checked;
@@ -344,14 +382,24 @@
             const hasKitchen = document.getElementById('check-kitchen').checked;
             const hasShed = document.getElementById('check-shed').checked;
 
+            const spec = CONFIG[currentSpecies];
+
+            // Unit Price Logic
+            const treadPrice = (LABOR_TREAD + (spec.treadMat * MAT_MARKUP)) * 11;
+            const riserPrice = (LABOR_RISER + (spec.riserMat * MAT_MARKUP)) * 11;
+            const landingPrice = hasLanding ? 350.00 : 0.00; // Fixed landing price as requested
+            
+            document.getElementById('price-treads').innerText = formatMoney(treadPrice);
+            document.getElementById('price-risers').innerText = formatMoney(riserPrice);
+
             let runningTotal = 0;
             let runningMat = 0;
 
-            if (hasTreads) { runningTotal += ITEMS.treads.total; runningMat += ITEMS.treads.mat; }
-            if (hasRisers) { runningTotal += ITEMS.risers.total; runningMat += ITEMS.risers.mat; }
-            if (hasLanding) { runningTotal += ITEMS.landing.total; runningMat += ITEMS.landing.mat; }
+            if (hasTreads) { runningTotal += treadPrice; runningMat += (spec.treadMat * 11); }
+            if (hasRisers) { runningTotal += riserPrice; runningMat += (spec.riserMat * 11); }
+            if (hasLanding) { runningTotal += landingPrice; runningMat += spec.landingMat; }
 
-            // Bundle Logic & Description Updates
+            // Bundle Logic
             const shoringPriceDisplay = document.getElementById('price-shoring');
             const shoringOldDisplay = document.getElementById('old-price-shoring');
             const shoringDescDisplay = document.getElementById('desc-shoring');
@@ -360,13 +408,13 @@
                     shoringPriceDisplay.innerText = "INCLUDED";
                     shoringPriceDisplay.classList.add('text-green-600');
                     shoringOldDisplay.classList.remove('hidden');
-                    shoringDescDisplay.innerHTML = 'Reinforce and secure short section of railing. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tight">[Included with Stair Treads]</span>';
+                    shoringDescDisplay.innerHTML = 'Reinforce the short section of rail, shoring it up to be identical to the other hand rail. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tight">[Included with Stair Treads]</span>';
                 } else {
-                    runningTotal += ITEMS.shoring.total;
-                    shoringPriceDisplay.innerText = formatMoney(ITEMS.shoring.total);
+                    runningTotal += REPAIR_ITEMS.shoring.total;
+                    shoringPriceDisplay.innerText = formatMoney(REPAIR_ITEMS.shoring.total);
                     shoringPriceDisplay.classList.remove('text-green-600');
                     shoringOldDisplay.classList.add('hidden');
-                    shoringDescDisplay.innerText = 'Reinforce and secure short section of railing.';
+                    shoringDescDisplay.innerText = 'Reinforce the short section of rail, shoring it up to be identical to the other hand rail.';
                 }
             }
 
@@ -380,8 +428,8 @@
                     kitchenOldDisplay.classList.remove('hidden');
                     kitchenDescDisplay.innerHTML = 'Repair missing wood plank under moveable island. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tight">[Included with Landing Upgrade]</span>';
                 } else {
-                    runningTotal += ITEMS.kitchen.total;
-                    kitchenPriceDisplay.innerText = formatMoney(ITEMS.kitchen.total);
+                    runningTotal += REPAIR_ITEMS.kitchen.total;
+                    kitchenPriceDisplay.innerText = formatMoney(REPAIR_ITEMS.kitchen.total);
                     kitchenPriceDisplay.classList.remove('text-green-600');
                     kitchenOldDisplay.classList.add('hidden');
                     kitchenDescDisplay.innerText = 'Repair missing wood plank under moveable island. Best match guaranteed.';
@@ -398,24 +446,22 @@
                     shedOldDisplay.classList.remove('hidden');
                     shedDescDisplay.innerHTML = 'Realignment and hardware replacement for secure padlocking. <span class="text-blue-600 font-bold uppercase text-[10px] tracking-tight">[Included for Project Total > $200]</span>';
                 } else {
-                    runningTotal += ITEMS.shed.total;
-                    runningMat += ITEMS.shed.mat;
-                    shedPriceDisplay.innerText = formatMoney(ITEMS.shed.total);
+                    runningTotal += REPAIR_ITEMS.shed.total;
+                    runningMat += REPAIR_ITEMS.shed.mat;
+                    shedPriceDisplay.innerText = formatMoney(REPAIR_ITEMS.shed.total);
                     shedPriceDisplay.classList.remove('text-green-600');
                     shedOldDisplay.classList.add('hidden');
                     shedDescDisplay.innerText = 'Realignment and hardware replacement for secure padlocking.';
                 }
             }
 
-            let consumableMarkupCost = 0;
             let rawConsumableCost = 0;
             if (hasTreads || hasRisers || hasLanding) { 
-                consumableMarkupCost = ITEMS.consumables; 
-                rawConsumableCost = RAW_MAT_CONSUMABLES;
+                rawConsumableCost = spec.sealerMat + REPAIR_ITEMS.consumablesBase;
             }
 
             let hiddenTax = (runningMat + rawConsumableCost) * TAX_RATE;
-            let grandTotal = runningTotal + hiddenTax + consumableMarkupCost;
+            let grandTotal = runningTotal + hiddenTax + (rawConsumableCost * (MAT_MARKUP - 1)); // Applying consumable margin
 
             let ccFeeAmt = 0;
             const useCC = document.getElementById('use-credit-card').checked;
@@ -428,7 +474,7 @@
             }
 
             // Internal Deposit Calculation
-            let materialDepositBase = ( (runningMat * MAT_MARKUP) + hiddenTax + consumableMarkupCost ) * DEPOSIT_MARKUP;
+            let materialDepositBase = ( (runningMat * MAT_MARKUP) + hiddenTax + (rawConsumableCost * MAT_MARKUP) ) * DEPOSIT_MARKUP;
             if (useCC) materialDepositBase *= (1 + CC_FEE_RATE);
             let finalBalance = grandTotal - materialDepositBase;
 
@@ -451,7 +497,6 @@
             document.getElementById('balance-amount').innerText = formatMoney(finalBalance);
         }
 
-        // Signature Pad Logic
         const canvas = document.getElementById('signature-pad');
         const ctx = canvas.getContext('2d');
         let drawing = false;
@@ -486,5 +531,3 @@
     </script>
 </body>
 </html>
-
-```
